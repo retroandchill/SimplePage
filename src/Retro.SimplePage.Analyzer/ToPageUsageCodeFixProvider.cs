@@ -10,16 +10,27 @@ using Microsoft.CodeAnalysis.Editing;
 
 namespace Retro.SimplePage.Analyzer;
 
+/// <summary>
+/// A Roslyn Code Fix Provider that suggests and applies fixes to replace incorrect invocation patterns
+/// with the recommended usage of 'ToPageAsync'.
+/// </summary>
+/// <remarks>
+/// This Code Fix Provider is specifically designed to work with diagnostics reported by the
+/// <see cref="ToPageUsageAnalyzer"/>.
+/// </remarks>
 [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(ToPageUsageCodeFixProvider)), Shared]
 public class ToPageUsageCodeFixProvider : CodeFixProvider {
   private const string Title = "Use ToPageAsync";
 
+  /// <inheritdoc />
   public override ImmutableArray<string> FixableDiagnosticIds =>
       ImmutableArray.Create(ToPageUsageAnalyzer.DiagnosticId);
 
+  /// <inheritdoc />
   public override FixAllProvider GetFixAllProvider() =>
       WellKnownFixAllProviders.BatchFixer;
 
+  /// <inheritdoc />
   public override async Task RegisterCodeFixesAsync(CodeFixContext context) {
     var root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
     if (root == null) return;

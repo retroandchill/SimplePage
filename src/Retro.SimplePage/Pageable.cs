@@ -275,7 +275,7 @@ public struct Pageable {
   }
 
   /// <summary>
-  /// Defines an implicit conversion operator for <see cref="Pageable"/> to <see cref="Option"/>.
+  /// Defines an implicit conversion operator for <see cref="Pageable"/> to <see cref="Option{PageRequest}"/>.
   /// </summary>
   /// <remarks>
   /// This operator facilitates the conversion of a <see cref="Pageable"/> instance to an

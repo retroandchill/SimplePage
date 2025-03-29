@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <IsPackable>false</IsPackable>
+        <IsPackable>true</IsPackable>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
 
@@ -12,6 +12,33 @@
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 
         <PackageId>Retro.SimplePage.Analyzer</PackageId>
+
+        <PackageProjectUrl>https://github.com/retroandchill/SimplePage</PackageProjectUrl>
+
+        <RepositoryUrl>https://github.com/retroandchill/SimplePage</RepositoryUrl>
+
+        <RepositoryType>Git</RepositoryType>
+
+        <Authors>Retro &amp; Chill</Authors>
+
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>pagination analyzer</PackageTags>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Description>Analyzer for ensuring pagination methods are used correctly.</Description>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugSymbols>true</DebugSymbols>
+      <DocumentationFile>bin\Release\Retro.SimplePage.Analyzer.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Retro.SimplePage.Analyzer.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -36,6 +63,15 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath="\" />
+        <None Include="$(OutputPath)\$(AssemblyName).pdb" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
+        <None Update="icon.png">
+            <Pack>True</Pack>
+            <PackagePath/>
+        </None>
     </ItemGroup>
 
 </Project>
