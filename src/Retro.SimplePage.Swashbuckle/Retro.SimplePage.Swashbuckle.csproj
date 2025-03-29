@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Retro.SimplePage.Swashbuckle.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugSymbols>true</DebugSymbols>
+      <DocumentationFile>bin\Release\Retro.SimplePage.Swashbuckle.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Retro.SimplePage.Analyzer\Retro.SimplePage.Analyzer.csproj" ReferenceOutputAssembly="False" OutputItemType="Analyzer"/>
+      <ProjectReference Include="..\Retro.SimplePage.Requests\Retro.SimplePage.Requests.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.OpenApi" Version="1.6.23" />
+      <PackageReference Include="Swashbuckle" Version="5.6.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="8.0.0" />
+    </ItemGroup>
+
+</Project>

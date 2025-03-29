@@ -1,0 +1,137 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Retro.SimplePage.Sample",
+    "version": "1.0"
+  },
+  "paths": {
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number to retrieve.",
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The number of items to retrieve per page.",
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherForecastPage"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherForecastPage"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherForecastPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecastPage": {
+        "required": [
+          "pageNumber",
+          "totalPages",
+          "pageSize",
+          "count",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "pageNumber": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "The current page number of the result set.",
+            "format": "int32"
+          },
+          "totalPages": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "The total number of pages in the result set.",
+            "format": "int32"
+          },
+          "pageSize": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "The number of items on each page.",
+            "format": "int32",
+            "example": 10
+          },
+          "count": {
+            "minimum": 0,
+            "type": "integer",
+            "description": "The total number of items available in the result set.",
+            "format": "int32",
+            "example": 1
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WeatherForecast"
+            },
+            "description": "An array of items on the current page."
+          }
+        },
+        "description": "Represents the output of a paged query of WeatherForecast."
+      }
+    }
+  }
+}
