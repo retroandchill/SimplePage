@@ -14,6 +14,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retro.SimplePage.Analyzer",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retro.SimplePage.Analyzer.Tests", "test\Retro.SimplePage.Analyzer.Tests\Retro.SimplePage.Analyzer.Tests.csproj", "{87B4A788-8F80-4EC2-9C0F-F7ABB11170BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retro.SimplePage.Requests", "src\Retro.SimplePage.Requests\Retro.SimplePage.Requests.csproj", "{2054B51A-9B4A-4F87-8A94-A178A917449E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retro.SimplePage.Sample", "examples\Retro.SimplePage.Sample\Retro.SimplePage.Sample.csproj", "{3BBAF634-B833-404F-B81D-B82E09741AF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{F00FBE24-9BE3-4BB1-8279-DC54F8F35254}"
+	ProjectSection(SolutionItems) = preProject
+		examples\openapi-spec.json = examples\openapi-spec.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retro.SimplePage.Swashbuckle", "src\Retro.SimplePage.Swashbuckle\Retro.SimplePage.Swashbuckle.csproj", "{F9910DD1-2B01-450B-88C7-5E1CC2EA9AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retro.SimplePage.Requests.Tests", "test\Retro.SimplePage.Requests.Tests\Retro.SimplePage.Requests.Tests.csproj", "{68E74288-09BA-4B49-9C36-46C37C8248A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +53,22 @@ Global
 		{87B4A788-8F80-4EC2-9C0F-F7ABB11170BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87B4A788-8F80-4EC2-9C0F-F7ABB11170BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87B4A788-8F80-4EC2-9C0F-F7ABB11170BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2054B51A-9B4A-4F87-8A94-A178A917449E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2054B51A-9B4A-4F87-8A94-A178A917449E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2054B51A-9B4A-4F87-8A94-A178A917449E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2054B51A-9B4A-4F87-8A94-A178A917449E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BBAF634-B833-404F-B81D-B82E09741AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BBAF634-B833-404F-B81D-B82E09741AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BBAF634-B833-404F-B81D-B82E09741AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BBAF634-B833-404F-B81D-B82E09741AF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9910DD1-2B01-450B-88C7-5E1CC2EA9AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9910DD1-2B01-450B-88C7-5E1CC2EA9AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9910DD1-2B01-450B-88C7-5E1CC2EA9AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9910DD1-2B01-450B-88C7-5E1CC2EA9AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68E74288-09BA-4B49-9C36-46C37C8248A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68E74288-09BA-4B49-9C36-46C37C8248A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68E74288-09BA-4B49-9C36-46C37C8248A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68E74288-09BA-4B49-9C36-46C37C8248A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{79088BCC-B85B-4C23-B492-7172DEC06FC9} = {5DF32AEF-7C20-4B5F-88B9-EB7AB333E916}
@@ -47,5 +76,9 @@ Global
 		{2D79A6AE-0AAA-4B62-B121-7FC68BF33ADA} = {B71673DB-E0C7-47F0-8800-DC7347785781}
 		{3ECEEFBD-DB09-4C64-B631-866EF51A3AE0} = {5DF32AEF-7C20-4B5F-88B9-EB7AB333E916}
 		{87B4A788-8F80-4EC2-9C0F-F7ABB11170BC} = {B71673DB-E0C7-47F0-8800-DC7347785781}
+		{2054B51A-9B4A-4F87-8A94-A178A917449E} = {5DF32AEF-7C20-4B5F-88B9-EB7AB333E916}
+		{3BBAF634-B833-404F-B81D-B82E09741AF0} = {F00FBE24-9BE3-4BB1-8279-DC54F8F35254}
+		{F9910DD1-2B01-450B-88C7-5E1CC2EA9AA4} = {5DF32AEF-7C20-4B5F-88B9-EB7AB333E916}
+		{68E74288-09BA-4B49-9C36-46C37C8248A1} = {B71673DB-E0C7-47F0-8800-DC7347785781}
 	EndGlobalSection
 EndGlobal
