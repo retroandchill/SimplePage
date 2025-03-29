@@ -27,12 +27,13 @@ public class PageJsonConverter<T> : JsonConverter<Page<T>> {
     var obj = jsonNode.AsObject();
     var pageNumber = obj["pageNumber"]?.GetValue<int>();
     var pageSize = obj["pageSize"]?.GetValue<int>();
+    var totalPages = obj["totalPages"]?.GetValue<int>();
     var items = JsonSerializer.Deserialize<List<T>>(obj["items"]!.ToString(), options);
-    if (pageNumber == null || pageSize == null || items == null) {
+    if (pageNumber == null || pageSize == null || items == null || totalPages == null) {
       throw new JsonException("Invalid page object.");
     }
 
-    return new Page<T>(items, items.Count, pageNumber.Value, pageSize.Value);
+    return new Page<T>(items, totalPages.Value * pageSize.Value, pageNumber.Value, pageSize.Value);
   }
 
   /// <inheritdoc/>

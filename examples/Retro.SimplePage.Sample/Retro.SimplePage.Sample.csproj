@@ -24,4 +24,8 @@
       <ProjectReference Include="..\..\src\Retro.SimplePage.Swashbuckle\Retro.SimplePage.Swashbuckle.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="Retro.SimplePage.Requests.Tests" />
+    </ItemGroup>
+
 </Project>
