@@ -13,9 +13,11 @@
         <PackageTags>pagination database orm</PackageTags>
         <PackageIcon>icon.png</PackageIcon>
 
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <Deterministic>true</Deterministic>
         <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Description>Pagination support of EF Core.</Description>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -38,6 +40,8 @@
 
     <ItemGroup>
         <None Include="../../README.md" Pack="true" PackagePath="\" />
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="lib\net9.0" Visible="true" />
+        <None Include="$(OutputPath)\$(AssemblyName).pdb" Pack="true" PackagePath="lib\net9.0" Visible="true" />
         <None Update="icon.png">
             <Pack>True</Pack>
             <PackagePath/>

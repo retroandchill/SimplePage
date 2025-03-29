@@ -2,6 +2,9 @@
 
 namespace Retro.SimplePage;
 
+/// <summary>
+/// Provides extension methods for handling pagination of collections.
+/// </summary>
 public static class PageableExtensions {
   /// <summary>
   /// Iterates over a data source, performing paginated requests until reaching the end of the source.

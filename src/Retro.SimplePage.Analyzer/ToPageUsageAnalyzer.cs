@@ -6,9 +6,31 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace Retro.SimplePage.Analyzer;
 
+/// <summary>
+/// Represents a diagnostic analyzer that identifies improper usage of the `ToPage` method
+/// in asynchronous methods within C# code. This analyzer ensures that developers are warned
+/// when using non-async pagination methods (`ToPage`) inside asynchronous contexts where
+/// their async counterparts (`ToPageAsync`) should be used instead.
+/// </summary>
+/// <remarks>
+/// The <c>ToPageUsageAnalyzer</c> is part of the Roslyn analysis framework and is designed
+/// to integrate seamlessly with the tooling to provide real-time feedback on invalid API usage.
+/// The diagnostics produced by the analyzer can be configured or suppressed using standard
+/// Roslyn mechanisms.
+/// </remarks>
+/// <example>
+/// A scenario where the analyzer produces a warning:
+/// - Using the `ToPage` method inside an `async` method, where it is expected to use `ToPageAsync`.
+/// </example>
+/// <diagnostics>
+/// Produces a warning with the diagnostic ID <c>SP001</c>.
+/// </diagnostics>
+/// <threadsafety>
+/// This class is thread-safe and supports concurrent execution as enabled by the Roslyn analysis framework.
+/// </threadsafety>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class ToPageUsageAnalyzer : DiagnosticAnalyzer {
-  public const string DiagnosticId = "SP001";
+  internal const string DiagnosticId = "SP001";
   private const string Title = "Use ToPageAsync in async methods";
   private const string MessageFormat = "'ToPage' should not be used in async methods. Use 'ToPageAsync' instead.";
   private const string Category = "Usage";
@@ -23,8 +45,10 @@ public class ToPageUsageAnalyzer : DiagnosticAnalyzer {
       isEnabledByDefault: true,
       description: Description);
 
+  /// <inheritdoc />
   public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
+  /// <inheritdoc />
   public override void Initialize(AnalysisContext context) {
     context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
     context.EnableConcurrentExecution();
