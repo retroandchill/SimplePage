@@ -156,43 +156,53 @@ public static class PageableExtensions {
   }
 
   /// <summary>
-  /// Converts a collection of items into a single page of results based on the specified page number and page size.
+  /// Converts a sequence of items into a paginated collection that includes metadata such as total elements, page number, and page size.
   /// </summary>
   /// <typeparam name="T">
-  /// The type of the items in the collection.
+  /// The type of the items in the sequence.
+  /// </typeparam>
+  /// <param name="source">
+  /// The sequence of items to be paginated.
+  /// </param>
+  /// <param name="pageNumber">
+  /// The current page number in the paginated collection.
+  /// </param>
+  /// <param name="pageSize">
+  /// The number of items to be included in each page.
+  /// </param>
+  /// <returns>
+  /// A <see cref="Page{T}"/> containing the items for the specified page along with pagination metadata.
+  /// </returns>
+  /// <exception cref="InvalidOperationException">
+  /// If the supplied enumerator lacks an easily determined size.
+  /// </exception>
+  public static Page<T> ToPage<T>(this IEnumerable<T> source, int pageNumber, int pageSize) {
+    if (!source.TryGetNonEnumeratedCount(out var count)) {
+      throw new InvalidOperationException("The source sequence cannot be enumerated more than once.");
+    }
+    
+    return new Page<T>(source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList(), count, pageNumber, pageSize);
+  }
+
+  /// <summary>
+  /// Converts a collection into a paginated representation based on the specified page settings.
+  /// </summary>
+  /// <typeparam name="T">
+  /// The type of items in the source collection.
   /// </typeparam>
   /// <param name="source">
   /// The source collection to be paginated.
   /// </param>
-  /// <param name="pageNumber">
-  /// The page number to retrieve. Must be greater than or equal to 1.
-  /// </param>
-  /// <param name="pageSize">
-  /// The number of items per page. Must be greater than 0.
-  /// </param>
-  /// <returns>
-  /// A <see cref="Page{T}"/> containing the items for the specified page and pagination details.
-  /// </returns>
-  public static Page<T> ToPage<T>(this IReadOnlyCollection<T> source, int pageNumber, int pageSize) {
-    return new Page<T>(source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList(), source.Count, pageNumber, pageSize);
-  }
-
-  /// <summary>
-  /// Converts the given collection to a paginated page based on the specified page number and page size.
-  /// </summary>
-  /// <typeparam name="T">
-  /// The type of the items in the source collection.
-  /// </typeparam>
-  /// <param name="source">
-  /// The collection of items to be paginated.
-  /// </param>
   /// <param name="pageable">
-  /// Passed pagination settings.
+  /// The pagination details encapsulated in a <see cref="Pageable"/> structure, including page number and page size.
   /// </param>
   /// <returns>
-  /// A <see cref="Page{T}"/> containing the items of the specified page.
+  /// A <see cref="Page{T}"/> object representing the requested page and containing the items of that page.
   /// </returns>
-  public static Page<T> ToPage<T>(this IReadOnlyCollection<T> source, Pageable pageable) {
+  /// <exception cref="InvalidOperationException">
+  /// If the supplied enumerator lacks an easily determined size.
+  /// </exception>
+  public static Page<T> ToPage<T>(this IEnumerable<T> source, Pageable pageable) {
     return pageable.Match((pageNumber, pageSize) => ToPage(source, pageNumber, pageSize),
         () => new Page<T>(source.ToList()));
   }

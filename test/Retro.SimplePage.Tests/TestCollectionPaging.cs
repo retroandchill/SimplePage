@@ -47,6 +47,10 @@ public class TestCollectionPaging {
     
     var page2 = list.ToPage(new PageRequest(2, 5));
     Assert.That(page2, Is.EqualTo([6, 7, 8, 9, 10]));
+    
+    Assert.Throws<InvalidOperationException>(() => list
+        .Where(x => x > 5)
+        .ToPage(new PageRequest(1, 5)));
   }
   
   [Test]
