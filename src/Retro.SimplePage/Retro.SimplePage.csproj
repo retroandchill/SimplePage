@@ -16,6 +16,9 @@
         <PackageIcon>icon.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
 
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <IsRoslynComponent>true</IsRoslynComponent>
+
         <Deterministic>true</Deterministic>
         <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -37,12 +40,31 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Retro.SimplePage.Analyzer\Retro.SimplePage.Analyzer.csproj" ReferenceOutputAssembly="False" OutputItemType="Analyzer" />
+      <ProjectReference Include="..\Retro.SimplePage.Analyzer\Retro.SimplePage.Analyzer.csproj" Pack="false">
+          <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+          <OutputItemType>Content</OutputItemType>
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </ProjectReference>
     </ItemGroup>
 
     <ItemGroup>
         <None Include="../../README.md" Pack="true" PackagePath="\" />
         <None Include="$(OutputPath)\$(AssemblyName).pdb" Pack="true" PackagePath="lib\net9.0" Visible="true" />
+        <None Include="$(OutputPath)\$(AssemblyName).Analyzer.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+        
+        <!-- Include the analyzer's .pdb file -->
+        <None Include="..\Retro.SimplePage.Analyzer\bin\$(Configuration)\netstandard2.0\Retro.SimplePage.Analyzer.pdb">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>true</Pack>
+            <PackagePath>analyzers/dotnet/cs</PackagePath>
+        </None>
+
+        <!-- Include the analyzer's XML documentation file -->
+        <None Include="..\Retro.SimplePage.Analyzer\bin\$(Configuration)\Retro.SimplePage.Analyzer.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>true</Pack>
+            <PackagePath>analyzers/dotnet/cs</PackagePath>
+        </None>
         <None Update="icon.png">
             <Pack>True</Pack>
             <PackagePath/>
