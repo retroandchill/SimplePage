@@ -4,6 +4,27 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageProjectUrl>https://github.com/retroandchill/SimplePage</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/retroandchill/SimplePage</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <Authors>Retro &amp; Chill</Authors>
+
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>pagination database orm</PackageTags>
+        <PackageIcon>icon.png</PackageIcon>
+
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DebugSymbols>true</DebugSymbols>
+      <DocumentationFile>bin\Release\Retro.SimplePage.EntityFrameworkCore.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Retro.SimplePage.EntityFrameworkCore.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,6 +34,14 @@
     <ItemGroup>
       <ProjectReference Include="..\Retro.SimplePage\Retro.SimplePage.csproj" />
         <ProjectReference Include="..\Retro.SimplePage.Analyzer\Retro.SimplePage.Analyzer.csproj" ReferenceOutputAssembly="False" OutputItemType="Analyzer" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath="\" />
+        <None Update="icon.png">
+            <Pack>True</Pack>
+            <PackagePath/>
+        </None>
     </ItemGroup>
 
 </Project>
