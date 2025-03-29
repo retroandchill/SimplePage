@@ -4,6 +4,23 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+
+        <Authors>Retro &amp; Chill</Authors>
+        <PackageProjectUrl>https://github.com/retroandchill/SimplePage</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/retroandchill/SimplePage</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>pagination swagger</PackageTags>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <IsRoslynComponent>true</IsRoslynComponent>
+
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Description>Swagger gen settings for the pageable type</Description>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -24,6 +41,15 @@
       <PackageReference Include="Microsoft.OpenApi" Version="1.6.23" />
       <PackageReference Include="Swashbuckle" Version="5.6.0" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath="\" />
+        <None Include="$(OutputPath)\$(AssemblyName).pdb" Pack="true" PackagePath="lib\net9.0" Visible="true" />
+        <None Update="icon.png">
+            <Pack>True</Pack>
+            <PackagePath/>
+        </None>
     </ItemGroup>
 
 </Project>

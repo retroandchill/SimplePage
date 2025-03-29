@@ -22,27 +22,27 @@ public partial class PageableParameterBinding : IModelBinder {
     }
 
     var queryParams = bindingContext.HttpContext.Request.Query;
-    queryParams.TryGetValue(_config.PageNumberParamName, out var page);
-    queryParams.TryGetValue(_config.PageSizeParamName, out var size);
+    queryParams.TryGetValue("page", out var page);
+    queryParams.TryGetValue("size", out var size);
     string? pageString = page;
     string? sizeString = size;
     var pageNumber = pageString is not null ? int.Parse(pageString) : 1;
     var pageSize = sizeString is not null ? int.Parse(sizeString) : _config.DefaultPageSize;
 
     if (pageNumber < 1) {
-      bindingContext.ModelState.TryAddModelError(_config.PageNumberParamName, 
+      bindingContext.ModelState.TryAddModelError("page", 
           "Page number must be greater than zero.");
       return Task.CompletedTask;
     }
     
     if (pageSize < 1) {
-      bindingContext.ModelState.TryAddModelError(_config.PageSizeParamName, 
+      bindingContext.ModelState.TryAddModelError("size", 
           "Page size must be greater than zero.");
       return Task.CompletedTask;
     }
 
     if (pageSize > _config.MaxPageSize) {
-      bindingContext.ModelState.TryAddModelError(_config.PageSizeParamName, 
+      bindingContext.ModelState.TryAddModelError("size", 
           $"Page size must not exceed the maximum allowed value of {_config.MaxPageSize}.");
       return Task.CompletedTask;
     }

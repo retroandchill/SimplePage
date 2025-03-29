@@ -4,6 +4,23 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+
+        <Authors>Retro &amp; Chill</Authors>
+        <PackageProjectUrl>https://github.com/retroandchill/SimplePage</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/retroandchill/SimplePage</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>pagination web-api</PackageTags>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <IsRoslynComponent>true</IsRoslynComponent>
+
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Description>Request parameter binding rules for the Pageable type.</Description>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -27,6 +44,15 @@
       </PackageReference>
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath="\" />
+        <None Include="$(OutputPath)\$(AssemblyName).pdb" Pack="true" PackagePath="lib\net9.0" Visible="true" />
+        <None Update="icon.png">
+            <Pack>True</Pack>
+            <PackagePath/>
+        </None>
     </ItemGroup>
 
 </Project>
