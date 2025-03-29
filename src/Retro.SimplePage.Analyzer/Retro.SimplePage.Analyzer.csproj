@@ -67,8 +67,7 @@
 
     <ItemGroup>
         <None Include="../../README.md" Pack="true" PackagePath="\" />
-        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/roslyn$(ROSLYN_VERSION)/dotnet/cs" Visible="false" />
-        <None Include="$(OutputPath)\$(AssemblyName).pdb" Pack="true" PackagePath="analyzers/roslyn$(ROSLYN_VERSION)/dotnet/cs" Visible="false" />
+        <None Include="$(OutputPath)\$(AssemblyName).pdb" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
         <None Update="icon.png">
             <Pack>True</Pack>
             <PackagePath/>
