@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <IsPackable>true</IsPackable>
+        <IsPackable>false</IsPackable>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
 
@@ -10,26 +10,6 @@
         <IsRoslynComponent>true</IsRoslynComponent>
         <ImplicitUsings>true</ImplicitUsings>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-
-        <PackageId>Retro.SimplePage.Analyzer</PackageId>
-
-        <PackageProjectUrl>https://github.com/retroandchill/SimplePage</PackageProjectUrl>
-
-        <RepositoryUrl>https://github.com/retroandchill/SimplePage</RepositoryUrl>
-
-        <RepositoryType>Git</RepositoryType>
-
-        <Authors>Retro &amp; Chill</Authors>
-
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageTags>pagination analyzer</PackageTags>
-        <PackageIcon>icon.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
-
-        <Deterministic>true</Deterministic>
-        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <Description>Analyzer for ensuring pagination methods are used correctly.</Description>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -67,7 +47,9 @@
 
     <ItemGroup>
         <None Include="../../README.md" Pack="true" PackagePath="\" />
-        <None Include="$(OutputPath)\$(AssemblyName).pdb" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/roslyn$(ROSLYN_VERSION)/dotnet/cs" Visible="false" />
+        <None Include="$(OutputPath)\$(AssemblyName).pdb" Pack="true" PackagePath="analyzers/roslyn$(ROSLYN_VERSION)/dotnet/cs" Visible="false" />
+        <None Include="$(OutputPath)\$(AssemblyName).xml" Pack="true" PackagePath="analyzers/roslyn$(ROSLYN_VERSION)/dotnet/cs" Visible="false" />
         <None Update="icon.png">
             <Pack>True</Pack>
             <PackagePath/>

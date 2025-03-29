@@ -23,14 +23,14 @@ namespace Retro.SimplePage.Analyzer;
 /// - Using the `ToPage` method inside an `async` method, where it is expected to use `ToPageAsync`.
 /// </example>
 /// <diagnostics>
-/// Produces a warning with the diagnostic ID <c>SP001</c>.
+/// Produces a warning with the diagnostic ID <c>SP0001</c>.
 /// </diagnostics>
 /// <threadsafety>
 /// This class is thread-safe and supports concurrent execution as enabled by the Roslyn analysis framework.
 /// </threadsafety>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public class ToPageUsageAnalyzer : DiagnosticAnalyzer {
-  internal const string DiagnosticId = "SP001";
+  internal const string DiagnosticId = "SP0001";
   private const string Title = "Use ToPageAsync in async methods";
   private const string MessageFormat = "'ToPage' should not be used in async methods. Use 'ToPageAsync' instead.";
   private const string Category = "Usage";

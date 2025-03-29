@@ -44,7 +44,7 @@ public class ToPageUsageAnalyzerTests
     var diagnostic = diagnostics.First();
     using (Assert.EnterMultipleScope())
     {
-      Assert.That(diagnostic.Id, Is.EqualTo("SP001"), "Expected diagnostic ID to match.");
+      Assert.That(diagnostic.Id, Is.EqualTo("SP0001"), "Expected diagnostic ID to match.");
       Assert.That(diagnostic.GetMessage(), Is.EqualTo("'ToPage' should not be used in async methods. Use 'ToPageAsync' instead."), "Diagnostic message mismatch.");
     }
   }
