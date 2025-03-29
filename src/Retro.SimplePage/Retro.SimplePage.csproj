@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>Retro.SimplePage</AssemblyName>
+        <RootNamespace>Retro.SimplePage</RootNamespace>
+        <PackageId>Retro.SimplePage</PackageId>
+        <Authors>Retro &amp; Chill</Authors>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="LanguageExt.Core" Version="5.0.0-beta-49" />
+      <PackageReference Include="System.Linq.Async" Version="6.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Retro.SimplePage.Analyzer\Retro.SimplePage.Analyzer.csproj" ReferenceOutputAssembly="False" OutputItemType="Analyzer" />
+    </ItemGroup>
+
+
+</Project>
